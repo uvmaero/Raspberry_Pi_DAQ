@@ -2,7 +2,7 @@ from __future__ import print_function
 
 import can
 can.rc['interface'] = 'socketcan'
-can.rc['channel'] = 'can0'
+can.rc['channel'] = 'vcan0'
 can.rc['bitrate'] = 500000
 
 
