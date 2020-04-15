@@ -12,7 +12,7 @@ can.rc['channel'] = 'vcan0' # vcan0 for virtual, can0 for live
 can.rc['bitrate'] = 500000
 bus = can.interface.Bus()
 
-canID = 0x0C0
+can_ID = 0x0C0
 
 def get_can_message(id):
     for message in bus:
@@ -20,7 +20,7 @@ def get_can_message(id):
             data = message.data[0]
             return data
 
-def store_data():
+def store_data(canID):
     #load database credentials
     credentials = json.load(open("credentials.json", "r"))
 
@@ -61,6 +61,6 @@ def store_data():
     # sleep
     #time.sleep(0.25)
 
-while True:
-    store_data()
+#while True:
+#    store_data(can_ID)
     
