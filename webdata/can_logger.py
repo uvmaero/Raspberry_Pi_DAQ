@@ -5,6 +5,11 @@ import json
 import datetime
 import time
 import can
+import matplotlib
+matplotlib.use('Pdf')
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+import mpld3 #to graph on a site
 
 # create CAN interface
 can.rc['interface'] = 'socketcan'
@@ -13,6 +18,12 @@ can.rc['bitrate'] = 500000
 bus = can.interface.Bus()
 
 can_ID = 0x0C0
+
+# declare plot and axis data lists
+x1 = []
+y1 = []
+fig = plt.figure()
+ax = fig.add_subplot(1,1,1)
 
 def get_can_message(id):
     for message in bus:
@@ -47,6 +58,10 @@ def store_data(canID):
     # print to display
     print(msg)
 
+    # add to axis lists
+    y1.append(msg)
+    x1.append(now)
+
     # insert into database
     data = (now,canID, msg)
     cursor.execute(insert_sql,data)
@@ -58,9 +73,29 @@ def store_data(canID):
     cursor.close()
     database.close()
 
+    # update graph
+    graph(x1,y1)
+
     # sleep
     #time.sleep(0.25)
 
 #while True:
 #    store_data(can_ID)
-    
+
+def graph(x1, y1):
+   # draw the axis data:
+   ax.clear()
+   ax.plot(x1,y1)
+
+   # format graph
+   plt.xticks(rotation=45, ha='right')
+   plt.subplots_adjust(bottom=0.30)
+   plt.title('Test table')
+   plt.xlabel('Time')
+   plt.ylabel('CAN data')
+
+# call for graph generation every second
+ani = animation.FuncAnimation(fig, store_data, fargs=(x1,y1), interval=1000)
+#plt.show()
+#fig.show()
+mpld3.show(fig) #to graph on site
