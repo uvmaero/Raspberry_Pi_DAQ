@@ -6,10 +6,8 @@ import datetime
 import time
 import can
 import matplotlib
-matplotlib.use('Pdf')
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt, mpld3
 import matplotlib.animation as animation
-import mpld3 #to graph on a site
 
 # create CAN interface
 can.rc['interface'] = 'socketcan'
@@ -22,8 +20,9 @@ can_ID = 0x0C0
 # declare plot and axis data lists
 x1 = []
 y1 = []
-fig = plt.figure()
-ax = fig.add_subplot(1,1,1)
+fig = plt.figure() #creates figure object
+ax = fig.add_subplot(1,1,1) #creates axis object in the figure
+ax.set_title("Plot 1", fontsize='large')
 
 def get_can_message(id):
     for message in bus:
@@ -60,7 +59,7 @@ def store_data(canID):
 
     # add to axis lists
     y1.append(msg)
-    x1.append(now)
+    x1.append(now) #timestamp
 
     # insert into database
     data = (now,canID, msg)
@@ -95,7 +94,7 @@ def graph(x1, y1):
    plt.ylabel('CAN data')
 
 # call for graph generation every second
-ani = animation.FuncAnimation(fig, store_data, fargs=(x1,y1), interval=1000)
-#plt.show()
-#fig.show()
-mpld3.show(fig) #to graph on site
+#ani = animation.FuncAnimation(fig, store_data, fargs=(x1,y1), interval=1000)
+
+#fig.show() --> generates an image of the graph, usually in GUI window
+save_html(plt, "templates/main.html") #save fig to main.html
