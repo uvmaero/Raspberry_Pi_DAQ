@@ -6,7 +6,7 @@ import datetime
 import time
 import can
 import matplotlib
-import matplotlib.pyplot as plt, mpld3
+import matplotlib.pyplot
 import matplotlib.animation as animation
 
 # create CAN interface
@@ -16,6 +16,11 @@ can.rc['bitrate'] = 500000
 bus = can.interface.Bus()
 
 can_ID = 0x0C0
+
+#get data from main.html java function (submitInfo)
+@app.route('/getmethod/<jsdata>')
+def get_javascript_data(jsdata):
+	return jsdata
 
 # declare plot and axis data lists
 x1 = []

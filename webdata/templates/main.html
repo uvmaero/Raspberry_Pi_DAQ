@@ -16,7 +16,17 @@
     		<script src="/static/can_chart.js"></script>
 		<script src="../can_logger.py"></script>		
 		
-			
+
+		<script type="javascript">
+		function submitInfo(){
+			var str = document.getElementById("user").value;
+			alert("user input: "+str);
+		}
+		</script>
+		
+		<input id="user" placeholder="Enter a command">
+		<br>
+		<button onclick="submitInfo()"  id="submitUser">Enter</button>			
 	</body>
 </html>
 
