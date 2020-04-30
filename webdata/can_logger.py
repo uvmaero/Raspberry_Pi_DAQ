@@ -102,4 +102,4 @@ def graph(x1, y1):
 #ani = animation.FuncAnimation(fig, store_data, fargs=(x1,y1), interval=1000)
 
 #fig.show() --> generates an image of the graph, usually in GUI window
-save_html(plt, "templates/main.html") #save fig to main.html
+#save_html(plt, "templates/main.html") #save fig to main.html
