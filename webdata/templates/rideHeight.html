@@ -110,7 +110,7 @@ $(document).ready(function () {
         }
     };
 
-    const context = document.getElementById('ride1').getContext('2d');
+    const context1 = document.getElementById('ride1').getContext('2d');
 var ride1 = document.getElementById('ride1');
 ride1.width = 700;
 ride1.height = 600;
@@ -118,19 +118,19 @@ ride1.style.left = "100px";
 ride1.style.top = "100px";
 ride1.style.position = "absolute";
 
-    const lineChart = new Chart(context, config);
+    const lineChart1 = new Chart(context1, config1);
 
-    const source = new EventSource("/rideHeightData1");
+    const source1 = new EventSource("/rideHeightData1");
 
-    source.onmessage = function (event) {
-        const data = JSON.parse(event.data);
-        if (config.data.labels.length === 20) {
-            config.data.labels.shift();
-            config.data.datasets[0].data.shift();
+    source1.onmessage = function (event) {
+        const data1 = JSON.parse(event.data);
+        if (config1.data1.labels.length === 20) {
+            config1.data1.labels.shift();
+            config1.data1.datasets[0].data.shift();
         }
-        config.data.labels.push(data.time);
-        config.data.datasets[0].data.push(data.value);
-        lineChart.update();
+        config1.data1.labels.push(data.time);
+        config1.data1.datasets[0].data.push(data.value);
+        lineChart1.update();
     }
 });
 
@@ -180,27 +180,27 @@ $(document).ready(function () {
         }
     };
 
-    const context = document.getElementById('ride2').getContext('2d');
-var ride1 = document.getElementById('ride2');
-ride1.width = 700;
-ride1.height = 600;
-ride1.style.left = "100px";
-ride1.style.top = "100px";
-ride1.style.position = "absolute";
+    const context2 = document.getElementById('ride2').getContext('2d');
+var ride2 = document.getElementById('ride2');
+ride2.width = 700;
+ride2.height = 600;
+ride2.style.left = "100px";
+ride2.style.top = "100px";
+ride2.style.position = "absolute";
 
-    const lineChart = new Chart(context, config);
+    const lineChart2 = new Chart(context2, config2);
 
-    const source = new EventSource("/rideHeightData2");
+    const source2 = new EventSource("/rideHeightData2");
 
-    source.onmessage = function (event) {
-        const data = JSON.parse(event.data);
-        if (config.data.labels.length === 20) {
-            config.data.labels.shift();
-            config.data.datasets[0].data.shift();
+    source2.onmessage = function (event) {
+        const data2 = JSON.parse(event.data);
+        if (config2.data2.labels.length === 20) {
+            config2.data2.labels.shift();
+            config2.data2.datasets[0].data.shift();
         }
-        config.data.labels.push(data.time);
-        config.data.datasets[0].data.push(data.value);
-        lineChart.update();
+        config2.data2.labels.push(data.time);
+        config2.data2.datasets[0].data.push(data.value);
+        lineChart2.update();
     }
 });
 
@@ -250,27 +250,27 @@ $(document).ready(function () {
         }
     };
 
-    const context = document.getElementById('ride3').getContext('2d');
-var ride1 = document.getElementById('ride3');
-ride1.width = 700;
-ride1.height = 600;
-ride1.style.left = "100px";
-ride1.style.top = "100px";
-ride1.style.position = "absolute";
+    const context3 = document.getElementById('ride3').getContext('2d');
+var ride3 = document.getElementById('ride3');
+ride3.width = 700;
+ride3.height = 600;
+ride3.style.left = "100px";
+ride3.style.top = "100px";
+ride3.style.position = "absolute";
 
-    const lineChart = new Chart(context, config);
+    const lineChart3 = new Chart(context, config);
 
-    const source = new EventSource("/rideHeightData3");
+    const source3 = new EventSource("/rideHeightData3");
 
-    source.onmessage = function (event) {
-        const data = JSON.parse(event.data);
-        if (config.data.labels.length === 40) {
-            config.data.labels.shift();
-            config.data.datasets[0].data.shift();
+    source3.onmessage = function (event) {
+        const data3 = JSON.parse(event.data);
+        if (config3.data3.labels.length === 40) {
+            config3.data3.labels.shift();
+            config3.data3.datasets[0].data.shift();
         }
-        config.data.labels.push(data.time);
-        config.data.datasets[0].data.push(data.value);
-        lineChart.update();
+        config3.data3.labels.push(data.time);
+        config3.data3.datasets[0].data.push(data.value);
+        lineChart3.update();
     }
 });
 
@@ -320,27 +320,27 @@ $(document).ready(function () {
         }
     };
 
-    const context = document.getElementById('ride4').getContext('2d');
-var ride1 = document.getElementById('ride4');
-ride1.width = 700;
-ride1.height = 600;
-ride1.style.left = "100px";
-ride1.style.top = "100px";
-ride1.style.position = "absolute";
+    const context4 = document.getElementById('ride4').getContext('2d');
+var ride4 = document.getElementById('ride4');
+ride4.width = 700;
+ride4.height = 600;
+ride4.style.left = "100px";
+ride4.style.top = "100px";
+ride4.style.position = "absolute";
 
-    const lineChart = new Chart(context, config);
+    const lineChart4 = new Chart(context, config);
 
-    const source = new EventSource("/rideHeightData4");
+    const source4 = new EventSource("/rideHeightData4");
 
-    source.onmessage = function (event) {
-        const data = JSON.parse(event.data);
-        if (config.data.labels.length === 40) {
-            config.data.labels.shift();
-            config.data.datasets[0].data.shift();
+    source4.onmessage = function (event) {
+        const data4 = JSON.parse(event.data);
+        if (config4.data4.labels.length === 40) {
+            config4.data4.labels.shift();
+            config4.data4.datasets[0].data.shift();
         }
-        config.data.labels.push(data.time);
-        config.data.datasets[0].data.push(data.value);
-        lineChart.update();
+        config4.data4.labels.push(data.time);
+        config4.data4.datasets[0].data.push(data.value);
+        lineChart4.update();
     }
 });
 
