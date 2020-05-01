@@ -18,16 +18,16 @@ bus = can.interface.Bus()
 can_ID = 0x0C0
 
 #get data from main.html java function (submitInfo)
-@app.route('/getmethod/<jsdata>')
-def get_javascript_data(jsdata):
-	return jsdata
+#@app.route('/getmethod/<jsdata>')
+#def get_javascript_data(jsdata):
+#	return jsdata
 
 # declare plot and axis data lists
-x1 = []
-y1 = []
-fig = plt.figure() #creates figure object
-ax = fig.add_subplot(1,1,1) #creates axis object in the figure
-ax.set_title("Plot 1", fontsize='large')
+# x1 = []
+# y1 = []
+# fig = plt.figure() #creates figure object
+# ax = fig.add_subplot(1,1,1) #creates axis object in the figure
+# ax.set_title("Plot 1", fontsize='large')
 
 def get_can_message(id):
     for message in bus:
@@ -82,9 +82,6 @@ def store_data(canID):
 
     # sleep
     #time.sleep(0.25)
-
-#while True:
-#    store_data(can_ID)
 
 def graph(x1, y1):
    # draw the axis data:
