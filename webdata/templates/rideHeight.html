@@ -294,6 +294,29 @@
         config2.data.datasets[0].data.push(data.value);
         lineChart2.update();
     }
+
+    const context3 = document.getElementById('ride3').getContext('2d');
+	var canvas3 = document.getElementById('ride3');
+	canvas3.width = 700;
+	canvas3.height = 600;
+	canvas3.style.left = "100px";
+	canvas3.style.top = "100px";
+	canvas3.style.position = "relative";
+
+    const lineChart3 = new Chart(context3, config3);
+
+    const source3 = new EventSource("/rideHeightData3");
+
+    source3.onmessage = function (event) {
+        const data = JSON.parse(event.data);
+        if (config3.data.labels.length === 20) {
+            config3.data.labels.shift();
+            config3.data.datasets[0].data.shift();
+        }
+        config3.data.labels.push(data.time);
+        config3.data.datasets[0].data.push(data.value);
+        lineChart3.update();
+    }
     
     
     });
