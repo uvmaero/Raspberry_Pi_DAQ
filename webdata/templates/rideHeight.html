@@ -38,7 +38,7 @@
 
 
 
-      <div class="row">
+      {% comment %} <div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
@@ -57,7 +57,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> {% endcomment %}
     </div>
 <!--suppress JSUnresolvedLibraryURL -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
@@ -136,7 +136,7 @@ ride1.style.position = "relative";
     }
 });
 
-$(document).ready(function () {
+{% comment %} $(document).ready(function () {
     const config2 = {
         type: 'line',
         data: {
@@ -344,7 +344,7 @@ ride4.style.position = "relative";
         config4.data4.datasets[0].data.push(data.value);
         lineChart4.update();
     }
-});
+}); {% endcomment %}
 
 </script>
 </body>
