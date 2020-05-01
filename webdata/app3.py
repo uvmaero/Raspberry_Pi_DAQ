@@ -32,7 +32,7 @@ def VandC():
             yield f"data:{json_data}\n\n"
             time.sleep(1)
 
-    return Response(get_message_value(0x0C0), mimetype='text/event-stream'), render_template('VandC.html')
+    return Response(get_message_value(0x0C0), mimetype='text/event-stream')
 
 @app.route('/temp/')
 def temp():
@@ -43,7 +43,7 @@ def temp():
             yield f"data:{json_data}\n\n"
             time.sleep(1)
 
-    return Response(get_message_value(0x0C0), mimetype='text/event-stream'), render_template('temp.html')
+    return Response(get_message_value(0x0C0), mimetype='text/event-stream')
 
 
 if __name__ == '__main__':
