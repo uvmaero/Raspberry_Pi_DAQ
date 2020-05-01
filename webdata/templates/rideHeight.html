@@ -255,7 +255,7 @@
 	canvas.height = 600;
 	canvas.style.left = "100px";
 	canvas.style.top = "100px";
-	canvas.style.position = "absolute";
+	canvas.style.position = "relative";
 
     const lineChart = new Chart(context, config1);
 
@@ -278,20 +278,20 @@
 	canvas2.height = 600;
 	canvas2.style.left = "100px";
 	canvas2.style.top = "100px";
-	canvas2.style.position = "absolute";
+	canvas2.style.position = "relative";
 
-    const lineChart2 = new Chart(context2, config1);
+    const lineChart2 = new Chart(context2, config2);
 
     const source2 = new EventSource("/rideHeightData2");
 
     source2.onmessage = function (event) {
         const data = JSON.parse(event.data);
-        if (config1.data.labels.length === 20) {
-            config1.data.labels.shift();
-            config1.data.datasets[0].data.shift();
+        if (config2.data.labels.length === 20) {
+            config2.data.labels.shift();
+            config2.data.datasets[0].data.shift();
         }
-        config1.data.labels.push(data.time);
-        config1.data.datasets[0].data.push(data.value);
+        config2.data.labels.push(data.time);
+        config2.data.datasets[0].data.push(data.value);
         lineChart2.update();
     }
     
