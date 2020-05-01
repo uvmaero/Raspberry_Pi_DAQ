@@ -67,7 +67,7 @@
 <!--suppress JSUnresolvedLibraryURL -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
 <script>
-    $(document).onload(function () {
+    $(document).ready(function () {
         const config = {
             type: 'line',
             data: {
@@ -113,7 +113,7 @@
             }
         };
 
-        const context = document.getElementById('ride1').getContext('2d');
+    const context = document.getElementById('ride1').getContext('2d');
 	var canvas = document.getElementById('ride1');
 	canvas.width = 700;
 	canvas.height = 600;
@@ -136,6 +136,29 @@
             lineChart.update();
         }
 
+
+    const context2 = document.getElementById('ride2').getContext('2d');
+	var canvas2 = document.getElementById('ride2');
+	canvas2.width = 700;
+	canvas2.height = 600;
+	canvas2.style.left = "100px";
+	canvas2.style.top = "100px";
+	canvas2.style.position = "relative";
+
+        const lineChart2 = new Chart(context2, config2);
+
+        const source2 = new EventSource("/rideHeightData2");
+
+        source2.onmessage = function (event2) {
+            const data2 = JSON.parse(event2.data2);
+            if (config2.data2.labels.length === 20) {
+                config2.data2.labels.shift();
+                config2.data2.datasets[0].data.shift();
+            }
+            config2.data2.labels.push(data2.time);
+            config2.data2.datasets[0].data2.push(data2.value);
+            lineChart2.update();
+        }
 
     });
 
