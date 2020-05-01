@@ -145,18 +145,18 @@
 	canvas2.style.top = "100px";
 	canvas2.style.position = "relative";
 
-        const lineChart2 = new Chart(context2, config2);
+        const lineChart2 = new Chart(context, config);
 
-        const source2 = new EventSource("/rideHeightData2");
+        const source2 = new EventSource("/rideHeightData1");
 
-        source2.onmessage = function (event2) {
-            const data2 = JSON.parse(event2.data2);
-            if (config2.data2.labels.length === 20) {
-                config2.data2.labels.shift();
-                config2.data2.datasets[0].data.shift();
+        source2.onmessage = function (event) {
+            const data = JSON.parse(event.data);
+            if (config.data.labels.length === 20) {
+                config.data.labels.shift();
+                config.data.datasets[0].data.shift();
             }
-            config2.data2.labels.push(data2.time);
-            config2.data2.datasets[0].data2.push(data2.value);
+            config.data.labels.push(data.time);
+            config.data.datasets[0].data.push(data.value);
             lineChart2.update();
         }
 
