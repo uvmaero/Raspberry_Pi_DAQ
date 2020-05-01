@@ -1,0 +1,35 @@
+header {
+  overflow: hidden;
+  border: 1px solid #000080;
+  background-color: #000080;
+}
+
+header h1.logo {
+  margin: 0;
+  font-size: 3em;
+  color: #B0E0E6
+  text-transform: uppercase;
+  float: left;
+}
+
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.menu {
+  float: right;
+}
+
+.menu li {
+  display: inline;
+}
+
+.menu li + li {
+  margin-left: 35px;
+}
+
+.menu li a {
+  color: #00BFFF
+  text-decoration: none;
+}
