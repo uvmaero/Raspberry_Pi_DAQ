@@ -257,18 +257,18 @@
 	canvas.style.top = "100px";
 	canvas.style.position = "absolute";
 
-        const lineChart = new Chart(context, config);
+        const lineChart = new Chart(context, config1);
 
         const source = new EventSource("/rideHeightData1");
 
         source.onmessage = function (event) {
             const data = JSON.parse(event.data);
-            if (config.data.labels.length === 20) {
-                config.data.labels.shift();
-                config.data.datasets[0].data.shift();
+            if (config1.data.labels.length === 20) {
+                config1.data.labels.shift();
+                config1.data.datasets[0].data.shift();
             }
-            config.data.labels.push(data.time);
-            config.data.datasets[0].data.push(data.value);
+            config1.data.labels.push(data.time);
+            config1.data.datasets[0].data.push(data.value);
             lineChart.update();
         }
     
