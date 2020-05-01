@@ -25,7 +25,7 @@ def rideHeightTemp():
 
 @app.route('/rideHeightData')
 def rideHeightData():
-    return Response(get_message_value(0x0C0))
+    return Response(get_message_value(0x0C0), mimetype='text/event-stream')
 
 @app.route('/throttle')
 def throttleTemp():
