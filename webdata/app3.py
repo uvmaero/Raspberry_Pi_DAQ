@@ -4,7 +4,7 @@ import time
 import can_logger as can
 from datetime import datetime
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, Response
 
 app = Flask(__name__)
 
