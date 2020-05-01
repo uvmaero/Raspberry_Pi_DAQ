@@ -67,7 +67,7 @@
 <!--suppress JSUnresolvedLibraryURL -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
 <script>
-    $(document).ready(function () {
+    $(document).onload(function () {
         const config = {
             type: 'line',
             data: {
@@ -135,6 +135,8 @@
             config.data.datasets[0].data.push(data.value);
             lineChart.update();
         }
+
+
     });
 
 
