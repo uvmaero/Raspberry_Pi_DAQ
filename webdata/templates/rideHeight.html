@@ -318,6 +318,28 @@
         lineChart3.update();
     }
     
+    const context4 = document.getElementById('ride4').getContext('2d');
+	var canvas4 = document.getElementById('ride4');
+	canvas4.width = 700;
+	canvas4.height = 600;
+	canvas4.style.left = "100px";
+	canvas4.style.top = "100px";
+	canvas4.style.position = "relative";
+
+    const lineChart4 = new Chart(context4, config4);
+
+    const source4 = new EventSource("/rideHeightData4");
+
+    source4.onmessage = function (event) {
+        const data = JSON.parse(event.data);
+        if (config4.data.labels.length === 20) {
+            config4.data.labels.shift();
+            config4.data.datasets[0].data.shift();
+        }
+        config4.data.labels.push(data.time);
+        config4.data.datasets[0].data.push(data.value);
+        lineChart4.update();
+    }
     
     });
 
