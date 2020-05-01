@@ -21,7 +21,7 @@ def rideHeight():
             yield f"data:{json_data}\n\n"
             time.sleep(1)
 
-    return Response(stream_template('rideHeight',get_message_value(0x0C0)))
+    return Response('rideHeight.html',get_message_value(0x0C0))
 
 @app.route('/VandC/')
 def VandC():
