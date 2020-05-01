@@ -16,8 +16,17 @@
     <div class="container">
       <div class="col">
         <div class="row">
-            <canvas id="canvas"></canvas>
+		<canvas id="ride1"></canvas>
         </div>
+	<div class="row">
+		<canvas id=ride2"></canvas>
+	</div>
+	<div class="row">
+		<canvas id=ride3"></canvas>
+	</div>
+	<div class="row">
+		<canvas id=ride4"></canvas>
+	</div>
     </div>
     </div>
 <!--suppress JSUnresolvedLibraryURL -->
@@ -73,13 +82,13 @@
             }
         };
 
-        const context = document.getElementById('canvas').getContext('2d');
-	var canvas = document.getElementById('canvas');
-	canvas.width = 700;
-	canvas.height = 600;
-	canvas.style.left = "100px";
-	canvas.style.top = "100px";
-	canvas.style.position = "absolute";
+        const context = document.getElementById('ride1').getContext('2d');
+	var ride1 = document.getElementById('ride1');
+	ride1.width = 700;
+	ride1.height = 600;
+	ride1.style.left = "100px";
+	ride1.style.top = "100px";
+	ride1.style.position = "absolute";
 
         const lineChart = new Chart(context, config);
 

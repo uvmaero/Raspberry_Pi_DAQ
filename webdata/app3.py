@@ -13,7 +13,7 @@ def get_message_value(can_id, bit):
             json_data = json.dumps(
                     {'time':datetime.now().strftime('%H:%M:%S'), 'value': can.get_can_message(can_id, bit)})
             yield f"data:{json_data}\n\n"
-            time.sleep(.25)
+            time.sleep(.1)
 
 @app.route('/')
 def index():
