@@ -24,19 +24,19 @@ def rideHeightTemp():
     return render_template("rideHeight.html")
 
 @app.route('/rideHeightData1')
-def rideHeightData():
+def rideHeightData1():
     return Response(get_message_value(0x032, 0), mimetype='text/event-stream')
 
 @app.route('/rideHeightData2')
-def rideHeightData():
+def rideHeightData2():
     return Response(get_message_value(0x032, 2), mimetype='text/event-stream')
 
 @app.route('/rideHeightData3')
-def rideHeightData():
+def rideHeightData3():
     return Response(get_message_value(0x01C, 2), mimetype='text/event-stream')
 
 @app.route('/rideHeightData4')
-def rideHeightData():
+def rideHeightData4():
     return Response(get_message_value(0x01C, 4), mimetype='text/event-stream')
 
 @app.route('/throttle')
