@@ -4,7 +4,7 @@ $(document).ready(function () {
         data: {
             labels: [],
             datasets: [{
-                label: "damper 1",
+                label: "Ride Height Sensor Data",
                 backgroundColor: 'rgb(255, 99, 132)',
                 borderColor: 'rgb(255, 99, 132)',
                 data: [],
@@ -15,7 +15,7 @@ $(document).ready(function () {
             responsive: true,
             title: {
                 display: true,
-                text: 'title 2'
+                text: 'Creating Real-Time Charts with Flask'
             },
             tooltips: {
                 mode: 'index',
@@ -44,28 +44,26 @@ $(document).ready(function () {
         }
     };
 
-    
+    const context = document.getElementById('ride1').getContext('2d');
+var ride1 = document.getElementById('ride1');
+ride1.width = 700;
+ride1.height = 600;
+ride1.style.left = "100px";
+ride1.style.top = "100px";
+ride1.style.position = "absolute";
 
-        const context = document.getElementById('damper2').getContext('2d');
-        var canvas = document.getElementById('damper2');
-        canvas.width = 900;
-        canvas.height = 700;
-        canvas.style.left = "100px";
-        canvas.style.top = "300px";
-        canvas.style.position = "relative";
-    
-            const lineChart = new Chart(context, config);
-    
-            const source = new EventSource("/VandC");
-    
-            source.onmessage = function (event) {
-                const data = JSON.parse(event.data);
-                if (config.data.labels.length === 20) {
-                    config.data.labels.shift();
-                    config.data.datasets[0].data.shift();
-                }
-                config.data.labels.push(data.time);
-                config.data.datasets[0].data.push(data.value);
-                lineChart.update();
-            }
-    });
+    const lineChart = new Chart(context, config);
+
+    const source = new EventSource("/rideHeightData1");
+
+    source.onmessage = function (event) {
+        const data = JSON.parse(event.data);
+        if (config.data.labels.length === 20) {
+            config.data.labels.shift();
+            config.data.datasets[0].data.shift();
+        }
+        config.data.labels.push(data.time);
+        config.data.datasets[0].data.push(data.value);
+        lineChart.update();
+    }
+});
