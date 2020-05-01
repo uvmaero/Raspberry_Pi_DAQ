@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html> <html lang="en"> <head>
     <meta charset="UTF-8">
     <title>Creating Real-Time Charts with Flask</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
@@ -31,7 +29,7 @@
             data: {
                 labels: [],
                 datasets: [{
-                    label: "Random Dataset",
+                    label: "Throttle Sensor Data",
                     backgroundColor: 'rgb(255, 99, 132)',
                     borderColor: 'rgb(255, 99, 132)',
                     data: [],
@@ -72,6 +70,12 @@
         };
 
         const context = document.getElementById('canvas').getContext('2d');
+	var canvas = document.getElementById('canvas');
+	canvas.width = 700;
+	canvas.height = 600;
+	canvas.style.left = "100px";
+	canvas.style.top = "100px";
+	canvas.style.position = "absolute";
 
         const lineChart = new Chart(context, config);
 
