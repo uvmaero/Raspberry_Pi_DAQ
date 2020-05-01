@@ -15,26 +15,27 @@
     </header>
     <div class="container">
       <div class="row">
+
         <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                    <canvas id="ride1"></canvas>
-                </div>
-            </div>
+            <canvas id="ride1"></canvas>
         </div>
-      </div>
 
-
-
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body">
-                        <canvas id="ride2"></canvas>
-                    </div>
-                </div>
-            </div>
+        <div class="col-12">
+            <canvas id="ride2"></canvas>
         </div>
+
+        <div class="col-12">
+            <canvas id="ride3"></canvas>
+        </div>
+
+        <div class="col-12">
+            <canvas id="ride3"></canvas>
+        </div>
+
+        </div>
+    </div>
+
+
 
 
 
@@ -68,7 +69,142 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
 <script>
     $(document).ready(function () {
-        const config = {
+        const config1 = {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: "Ride Height Sensor Data",
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [],
+                    fill: false,
+                }],
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    text: 'Creating Real-Time Charts with Flask'
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Time'
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Value'
+                        }
+                    }]
+                }
+            }
+        };
+
+        const config2 = {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: "Ride Height Sensor Data",
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [],
+                    fill: false,
+                }],
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    text: 'Creating Real-Time Charts with Flask'
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Time'
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Value'
+                        }
+                    }]
+                }
+            }
+        };
+
+        const config3 = {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: "Ride Height Sensor Data",
+                    backgroundColor: 'rgb(255, 99, 132)',
+                    borderColor: 'rgb(255, 99, 132)',
+                    data: [],
+                    fill: false,
+                }],
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    text: 'Creating Real-Time Charts with Flask'
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: false,
+                },
+                hover: {
+                    mode: 'nearest',
+                    intersect: true
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Time'
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Value'
+                        }
+                    }]
+                }
+            }
+        };
+
+        const config4 = {
             type: 'line',
             data: {
                 labels: [],
@@ -119,7 +255,7 @@
 	canvas.height = 600;
 	canvas.style.left = "100px";
 	canvas.style.top = "100px";
-	canvas.style.position = "relative";
+	canvas.style.position = "absolute";
 
         const lineChart = new Chart(context, config);
 
@@ -135,31 +271,7 @@
             config.data.datasets[0].data.push(data.value);
             lineChart.update();
         }
-
-
-    const context2 = document.getElementById('ride2').getContext('2d');
-	var canvas2 = document.getElementById('ride2');
-	canvas2.width = 700;
-	canvas2.height = 600;
-	canvas2.style.left = "100px";
-	canvas2.style.top = "100px";
-	canvas2.style.position = "relative";
-
-        const lineChart2 = new Chart(context, config);
-
-        const source2 = new EventSource("/rideHeightData1");
-
-        source2.onmessage = function (event) {
-            const data = JSON.parse(event.data);
-            if (config.data.labels.length === 20) {
-                config.data.labels.shift();
-                config.data.datasets[0].data.shift();
-            }
-            config.data.labels.push(data.time);
-            config.data.datasets[0].data.push(data.value);
-            lineChart2.update();
-        }
-
+    
     });
 
 
