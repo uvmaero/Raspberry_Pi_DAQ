@@ -7,14 +7,13 @@
 <body>
 
 <div class="container">
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                    <canvas id="damper2"></canvas>
-                </div>
-            </div>
+    <div class="col">
+        <div class="row">
+		<canvas id="damper1"></canvas>
         </div>
+	<div cass="row">
+		<canvas id="damper2"></canvas>
+	</div>
     </div>
 </div>
 <!--suppress JSUnresolvedLibraryURL -->
@@ -71,13 +70,13 @@
 
     
 
-        const context = document.getElementById('damper2').getContext('2d');
-        var canvas = document.getElementById('damper2');
+        const context = document.getElementById('damper1').getContext('2d');
+        var canvas = document.getElementById('damper1');
         canvas.width = 700;
         canvas.height = 600;
         canvas.style.left = "100px";
         canvas.style.top = "100px";
-        canvas.style.position = "relative";
+        canvas.style.position = "absolute";
     
             const lineChart = new Chart(context, config);
     
