@@ -11,7 +11,7 @@ import matplotlib.animation as animation
 
 # create CAN interface
 can.rc['interface'] = 'socketcan'
-can.rc['channel'] = 'vcan0' # vcan0 for virtual, can0 for live
+can.rc['channel'] = 'can0' # vcan0 for virtual, can0 for live
 can.rc['bitrate'] = 500000
 bus = can.interface.Bus()
 
@@ -29,10 +29,10 @@ can_ID = 0x0C0
 # ax = fig.add_subplot(1,1,1) #creates axis object in the figure
 # ax.set_title("Plot 1", fontsize='large')
 
-def get_can_message(id):
+def get_can_message(id, bit):
     for message in bus:
         if message.arbitration_id == id:
-            data = message.data[0]
+            data = message.data[bit]
             return data
 
 def store_data(canID):

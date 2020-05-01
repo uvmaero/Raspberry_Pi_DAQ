@@ -8,10 +8,10 @@ from flask import Flask, render_template, request, Response
 
 app = Flask(__name__)
 
-def get_message_value(can_id):
+def get_message_value(can_id, bit):
         while True:
             json_data = json.dumps(
-                    {'time':datetime.now().strftime('%y-%m-%d %H:%M:%S'), 'value': can.get_can_message(can_id)})
+                    {'time':datetime.now().strftime('%H:%M:%S'), 'value': can.get_can_message(can_id, bit)})
             yield f"data:{json_data}\n\n"
             time.sleep(.25)
 
@@ -25,7 +25,7 @@ def rideHeightTemp():
 
 @app.route('/rideHeightData')
 def rideHeightData():
-    return Response(get_message_value(0x0C0), mimetype='text/event-stream')
+    return Response(get_message_value(0x01C, 2), mimetype='text/event-stream')
 
 @app.route('/throttle')
 def throttleTemp():
@@ -33,7 +33,7 @@ def throttleTemp():
 
 @app.route('/throttleData')
 def throttleData():
-    return Response(get_message_value(0x0C0), mimetype='text/event-stream')
+    return Response(get_message_value(0x01C, 0), mimetype='text/event-stream')
 
 @app.route('/steer')
 def steerTemp():
@@ -41,7 +41,7 @@ def steerTemp():
 
 @app.route('/steerData')
 def steerData():
-    return Response(get_message_value(0x0C0), mimetype='text/event-stream')
+    return Response(get_message_value(0x01C, 1), mimetype='text/event-stream')
 
 
 if __name__ == '__main__':
