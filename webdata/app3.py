@@ -8,7 +8,11 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-@app.route('/', methods=["GET"])
+@app.route('/')
+def index():
+    return render_template('layout.html')
+
+@app.route('/rideHeight', methods=["GET"])
 def rideHeight():
 	def chart_data():
     def get_message_value(can_id):
