@@ -1,5 +1,11 @@
-# Log relevent CAN data to sql database
+# CAHPRI
+# Missy, Kelley, George
+# CS121 Final Project
+# May 1, 2020
+# can_logger file that interfaces with CAN bus to collect and send
+# messages to vehicle. 
 
+# imports
 import mysql.connector
 import json
 import datetime
@@ -10,31 +16,23 @@ import matplotlib.pyplot
 import matplotlib.animation as animation
 
 # create CAN interface
+# See Source 2
 can.rc['interface'] = 'socketcan'
 can.rc['channel'] = 'can0' # vcan0 for virtual, can0 for live
 can.rc['bitrate'] = 500000
 bus = can.interface.Bus()
 
+# default can_ID for testing data
 can_ID = 0x0C0
 
-#get data from main.html java function (submitInfo)
-#@app.route('/getmethod/<jsdata>')
-#def get_javascript_data(jsdata):
-#	return jsdata
-
-# declare plot and axis data lists
-# x1 = []
-# y1 = []
-# fig = plt.figure() #creates figure object
-# ax = fig.add_subplot(1,1,1) #creates axis object in the figure
-# ax.set_title("Plot 1", fontsize='large')
-
+# read CAN bus for data and return message if id matches request
 def get_can_message(id, bit):
     for message in bus:
         if message.arbitration_id == id:
             data = message.data[bit]
             return data
 
+# store information into SQL database
 def store_data(canID):
     #load database credentials
     credentials = json.load(open("credentials.json", "r"))
@@ -62,10 +60,6 @@ def store_data(canID):
     # print to display
     print(msg)
 
-    # add to axis lists
-    y1.append(msg)
-    x1.append(now) #timestamp
-
     # insert into database
     data = (now,canID, msg)
     cursor.execute(insert_sql,data)
@@ -77,12 +71,10 @@ def store_data(canID):
     cursor.close()
     database.close()
 
-    # update graph
-    graph(x1,y1)
-
     # sleep
     #time.sleep(0.25)
 
+# If using GUI, the graph function is helpful to see data being ploted
 def graph(x1, y1):
    # draw the axis data:
    ax.clear()

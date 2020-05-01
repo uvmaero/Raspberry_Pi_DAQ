@@ -1,9 +1,18 @@
+<!--
+CAHPRI
+Missy, Kelley, George
+CS121 Final Project
+May 1, 2020
+rideHeight data visualization plots 
+-->
+
 <!DOCTYPE html>
 <html>
   <body>
     <header>
       <div class="containter">
         <h1 class="logo">Sensor Inputs</h1>
+        <!-- Menu Option for user to select chart -->
         <strong><nav>
           <ul class="menu">
             <li><a href="/rideHeight">Ride Height</a></li>
@@ -13,6 +22,7 @@
         </nav></strong>
       </div>
     </header>
+    <!-- containers to hold the chart -->
     <div class="container">
       <div class="row">
 
@@ -34,15 +44,17 @@
 
         </div>
     </div>
-
+<!-- Required Java script links to connect to bootstrap formatting for charts See Source 1-->
 <!--suppress JSUnresolvedLibraryURL -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <!--suppress JSUnresolvedLibraryURL -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <!--suppress JSUnresolvedLibraryURL -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+<!-- Javascript to create charts See Source 1-->
 <script>
     $(document).ready(function () {
+        // configuration for chart 1
         const config1 = {
             type: 'line',
             data: {
@@ -87,7 +99,7 @@
                 }
             }
         };
-
+        // configuration for chart 2
         const config2 = {
             type: 'line',
             data: {
@@ -132,7 +144,7 @@
                 }
             }
         };
-
+        // configuration for chart 3
         const config3 = {
             type: 'line',
             data: {
@@ -177,7 +189,7 @@
                 }
             }
         };
-
+        // configuration for chart 4
         const config4 = {
             type: 'line',
             data: {
@@ -223,6 +235,7 @@
             }
         };
 
+    // populate chart 1 with live data
     const context = document.getElementById('ride1').getContext('2d');
 	var canvas = document.getElementById('ride1');
 	canvas.width = 700;
@@ -246,6 +259,7 @@
         lineChart.update();
     }
 
+    // populate chart 2 with live data
     const context2 = document.getElementById('ride2').getContext('2d');
 	var canvas2 = document.getElementById('ride2');
 	canvas2.width = 700;
@@ -269,6 +283,7 @@
         lineChart2.update();
     }
 
+    // populate chart 3 with live data
     const context3 = document.getElementById('ride3').getContext('2d');
 	var canvas3 = document.getElementById('ride3');
 	canvas3.width = 700;
@@ -291,7 +306,8 @@
         config3.data.datasets[0].data.push(data.value);
         lineChart3.update();
     }
-    
+
+    // populate chart 4 with live data
     const context4 = document.getElementById('ride4').getContext('2d');
 	var canvas4 = document.getElementById('ride4');
 	canvas4.width = 700;

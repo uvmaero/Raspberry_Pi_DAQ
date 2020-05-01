@@ -1,3 +1,10 @@
+<!--
+CAHPRI
+Missy, Kelley, George
+CS121 Final Project
+May 1, 2020
+throttle position data visualization plots 
+-->
 <!DOCTYPE html>
 <html>
   <body>
@@ -6,6 +13,7 @@
         <h1 class="logo">Sensor Inputs</h1>
         <strong><nav>
           <ul class="menu">
+          <!-- Menu Options for User -->
             <li><a href="/rideHeight">Ride Height</a></li>
             <li><a href="/throttle">Throttle</a></li>
             <li><a href="/steer">Steering</a></li>
@@ -13,6 +21,7 @@
         </nav></strong>
       </div>
     </header>
+    <!-- container for charts -->
     <div class="container">
       <div class="row">
         <div class="col-12">
@@ -32,6 +41,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
 <script>
     $(document).ready(function () {
+        // javascript formatting for chart. See Source 1
         const config = {
             type: 'line',
             data: {
@@ -77,7 +87,8 @@
             }
         };
 
-        const context = document.getElementById('canvas').getContext('2d');
+    // populate chart 1 with live data
+    const context = document.getElementById('canvas').getContext('2d');
 	var canvas = document.getElementById('canvas');
 	canvas.width = 700;
 	canvas.height = 600;
