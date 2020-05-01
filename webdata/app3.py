@@ -2,7 +2,7 @@ import json
 import random
 import time
 import can_logger as can
-import datetime import datetime
+from datetime import datetime
 
 from flask import Flask, render_template, request
 
@@ -12,9 +12,8 @@ app = Flask(__name__)
 def index():
     return render_template('layout.html')
 
-@app.route('/rideHeight', methods=["GET"])
+@app.route('/rideHeight')
 def rideHeight():
-	def chart_data():
     def get_message_value(can_id):
         while True:
             json_data = json.dumps(
@@ -26,7 +25,6 @@ def rideHeight():
 
 @app.route('/VandC/')
 def VandC():
-	def chart_data():
     def get_message_value(can_id):
         while True:
             json_data = json.dumps(
@@ -38,7 +36,6 @@ def VandC():
 
 @app.route('/temp/')
 def temp():
-	def chart_data():
     def get_message_value(can_id):
         while True:
             json_data = json.dumps(
@@ -49,5 +46,5 @@ def temp():
     return Response(get_message_value(0x0C0), mimetype='text/event-stream'), render_template('temp.html')
 
 
-if __name__ == '__main__'
+if __name__ == '__main__':
 	application.run(debug==True, threaded=True)
