@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('layout.html')
 
 @app.route('/rideHeight')
 def rideHeight():
@@ -21,7 +21,7 @@ def rideHeight():
             yield f"data:{json_data}\n\n"
             time.sleep(1)
 
-    return Response('rideHeight.html',get_message_value(0x0C0))
+    return render_template("rideHeight.html"), Response(get_message_value(0x0C0), mimetype='text/event-stream')
 
 @app.route('/VandC/')
 def VandC():
