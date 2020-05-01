@@ -37,7 +37,7 @@
             data: {
                 labels: [],
                 datasets: [{
-                    label: "Ride Height Sensor Data",
+                    label: "Steering Sensor Data",
                     backgroundColor: 'rgb(255, 99, 132)',
                     borderColor: 'rgb(255, 99, 132)',
                     data: [],
@@ -87,7 +87,7 @@
 
         const lineChart = new Chart(context, config);
 
-        const source = new EventSource("/rideHeightData");
+        const source = new EventSource("/steerData");
 
         source.onmessage = function (event) {
             const data = JSON.parse(event.data);
