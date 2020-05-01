@@ -38,7 +38,7 @@
 
 
 
-      {% comment %} <div class="row">
+      <!--<div class="row">
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
@@ -57,8 +57,9 @@
                 </div>
             </div>
         </div>
-    </div> {% endcomment %}
     </div>
+    </div>
+    -->
 <!--suppress JSUnresolvedLibraryURL -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <!--suppress JSUnresolvedLibraryURL -->
@@ -136,215 +137,8 @@ ride1.style.position = "relative";
     }
 });
 
-{% comment %} $(document).ready(function () {
-    const config2 = {
-        type: 'line',
-        data: {
-            labels: [],
-            datasets: [{
-                label: "Ride Height Sensor Data",
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: [],
-                fill: false,
-            }],
-        },
-        options: {
-            responsive: true,
-            title: {
-                display: true,
-                text: 'Creating Real-Time Charts with Flask'
-            },
-            tooltips: {
-                mode: 'index',
-                intersect: false,
-            },
-            hover: {
-                mode: 'nearest',
-                intersect: true
-            },
-            scales: {
-                xAxes: [{
-                    display: true,
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Time'
-                    }
-                }],
-                yAxes: [{
-                    display: true,
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Value'
-                    }
-                }]
-            }
-        }
-    };
 
-    const context2 = document.getElementById('ride2').getContext('2d');
-var ride2 = document.getElementById('ride2');
-ride2.width = 700;
-ride2.height = 600;
-ride2.style.left = "100px";
-ride2.style.top = "100px";
-ride2.style.position = "relative";
 
-    const lineChart2 = new Chart(context2, config2);
-
-    const source2 = new EventSource("/rideHeightData2");
-
-    source2.onmessage = function (event) {
-        const data2 = JSON.parse(event.data);
-        if (config2.data2.labels.length === 20) {
-            config2.data2.labels.shift();
-            config2.data2.datasets[0].data.shift();
-        }
-        config2.data2.labels.push(data.time);
-        config2.data2.datasets[0].data.push(data.value);
-        lineChart2.update();
-    }
-});
-
-$(document).ready(function () {
-    const config3 = {
-        type: 'line',
-        data: {
-            labels: [],
-            datasets: [{
-                label: "Ride Height Sensor Data",
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: [],
-                fill: false,
-            }],
-        },
-        options: {
-            responsive: true,
-            title: {
-                display: true,
-                text: 'Creating Real-Time Charts with Flask'
-            },
-            tooltips: {
-                mode: 'index',
-                intersect: false,
-            },
-            hover: {
-                mode: 'nearest',
-                intersect: true
-            },
-            scales: {
-                xAxes: [{
-                    display: true,
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Time'
-                    }
-                }],
-                yAxes: [{
-                    display: true,
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Value'
-                    }
-                }]
-            }
-        }
-    };
-
-    const context3 = document.getElementById('ride3').getContext('2d');
-var ride3 = document.getElementById('ride3');
-ride3.width = 700;
-ride3.height = 600;
-ride3.style.left = "100px";
-ride3.style.top = "100px";
-ride3.style.position = "relative";
-
-    const lineChart3 = new Chart(context, config);
-
-    const source3 = new EventSource("/rideHeightData3");
-
-    source3.onmessage = function (event) {
-        const data3 = JSON.parse(event.data);
-        if (config3.data3.labels.length === 40) {
-            config3.data3.labels.shift();
-            config3.data3.datasets[0].data.shift();
-        }
-        config3.data3.labels.push(data.time);
-        config3.data3.datasets[0].data.push(data.value);
-        lineChart3.update();
-    }
-});
-
-$(document).ready(function () {
-    const config4 = {
-        type: 'line',
-        data: {
-            labels: [],
-            datasets: [{
-                label: "Ride Height Sensor Data",
-                backgroundColor: 'rgb(255, 99, 132)',
-                borderColor: 'rgb(255, 99, 132)',
-                data: [],
-                fill: false,
-            }],
-        },
-        options: {
-            responsive: true,
-            title: {
-                display: true,
-                text: 'Creating Real-Time Charts with Flask'
-            },
-            tooltips: {
-                mode: 'index',
-                intersect: false,
-            },
-            hover: {
-                mode: 'nearest',
-                intersect: true
-            },
-            scales: {
-                xAxes: [{
-                    display: true,
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Time'
-                    }
-                }],
-                yAxes: [{
-                    display: true,
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Value'
-                    }
-                }]
-            }
-        }
-    };
-
-    const context4 = document.getElementById('ride4').getContext('2d');
-var ride4 = document.getElementById('ride4');
-ride4.width = 700;
-ride4.height = 600;
-ride4.style.left = "100px";
-ride4.style.top = "100px";
-ride4.style.position = "relative";
-
-    const lineChart4 = new Chart(context, config);
-
-    const source4 = new EventSource("/rideHeightData4");
-
-    source4.onmessage = function (event) {
-        const data4 = JSON.parse(event.data);
-        if (config4.data4.labels.length === 40) {
-            config4.data4.labels.shift();
-            config4.data4.datasets[0].data.shift();
-        }
-        config4.data4.labels.push(data.time);
-        config4.data4.datasets[0].data.push(data.value);
-        lineChart4.update();
-    }
-}); {% endcomment %}
 
 </script>
 </body>
